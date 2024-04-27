@@ -3,9 +3,9 @@ version: '3.1'
 
 services:
 
-  mongo:
+  Snake-mongo:
     image: mongo
-    container_name: SvLearnMongo_mongodb
+    container_name: SvSnakeMongo_mongodb
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -15,16 +15,16 @@ services:
     ports:
       - "27017:27017"
 
-  mongo-express:
+  Snake-mongo-express:
     image: mongo-express
-    container_name: SvLearnMongo_mongo-express
+    container_name: SvSnakeMongo_mongo-express
     restart: always
     depends_on:
-      - mongo
+      - Snake-mongo
     ports:
       - "8081:8081"
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@snake-mongo:27017/
       ME_CONFIG_BASICAUTH: false

@@ -1,18 +1,19 @@
 // Create a new database and switch to it
-db = db.getSiblingDB('SvLearnMongo');
+db = db.getSiblingDB('SvSnakeMongo');
 
 // Create a new collection and insert documents
-db.documents.insert([
-    { name: 'Document 1' },
-    { name: 'Document 2' },
-    { name: 'Document 3' }
+db.scores.insert([
+    {
+        name: 'gyurci08',
+        score: 1
+    }
 ]);
 
 // Create a user with read and write privileges for the database
 db.createUser({
-    user: 'SvLearnMongoUser',
-    pwd: 'SvLearnMongoP0ss',
+    user: 'SvSnakeMongo',
+    pwd: 'SvSnakeMongo',
     roles: [
-        { role: 'readWrite', db: 'SvLearnMongo' }
+        { role: 'readWrite', db: 'SvSnakeMongo' }
     ]
 });
