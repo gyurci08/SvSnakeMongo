@@ -1,7 +1,6 @@
 import type { PageServerLoad } from './$types';
 
 
-
 export const actions = {
     default: async ({request, cookies}) => {
             const formData = await request.formData();
@@ -30,3 +29,5 @@ export const load = (async ({ cookies }) => {
         username
     };
 }) satisfies PageServerLoad;
+
+

@@ -2,7 +2,11 @@
     import type {PageData} from "./$types";
 
     export let data: PageData;
-    $:({scores} = data);
+
+
+
+
+
 </script>
 
 <style>
@@ -61,13 +65,6 @@
         color: rgba(0, 0, 0, 0.6);
     }
 
-    .player td {
-        color: rgba(0, 0, 0, 1.0);
-        font-weight: bold;
-        background: rgba(215, 215, 215, 1);
-        color: rgba(0, 0, 0, 0.8);
-
-    }
 
     tr:last-child td:first-child {
         border-radius: 0 0 0 5px;
@@ -90,12 +87,12 @@
             <th>Username</th>
             <th>Score</th>
         </tr>
-        {#each scores as score}
-        <tr>
-            <td>1</td>
-            <td>{score.name}</td>
-            <td>{score.score}</td>
-        </tr>
+        {#each data.scores as score, rank}
+            <tr>
+                <td>{rank+1}</td>
+                <td>{score.name}</td>
+                <td>{score.score}</td>
+            </tr>
         {/each }
     </table>
 </div>
