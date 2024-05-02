@@ -3,6 +3,7 @@
     import Game from '$lib/frame/Game.svelte';
     import {goto} from "$app/navigation";
 
+
     export let data: PageData;
 
 
@@ -67,11 +68,13 @@
     <!--<h2 class="tx_center">isEnd: {gameStats['isEnd']}</h2>-->
     <Game bind:gameStats></Game>
 
+    <button on:click={reloadPage}>Replay</button>
+
     {#if gameStats['lastScore'] > 0}
         <h2 class="tx_center">Last Score: {gameStats['lastScore']}</h2>
         <h2 class="tx_center">You can save the progress to scoreboard for the user "{gameStats['username']}" ;)</h2>
         <button on:click={doPost}>Save</button>
-        <button on:click={reloadPage}>Replay</button>
+        <a class="btn" style="text-align: center" href="/score">Scoreboard</a>
     {/if}
 
 
@@ -88,9 +91,26 @@
 
 
 <style>
+    :global(body){
+        background-image: url("/menu/photorealistic-galaxy-background.jpg");
+        background-size: 100%;
+        caret-color: transparent;
+    }
+
+    .btn{
+        padding: 1px 6px;
+        border: 1px outset buttonborder;
+        border-radius: 3px;
+        color: buttontext;
+        background-color: buttonface;
+        text-decoration: none;
+    }
+
 
     button {
         margin: 0 auto;
+        margin-top: 2px;
+        margin-bottom: 2px;
         display: block;
     }
 

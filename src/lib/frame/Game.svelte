@@ -2,11 +2,11 @@
 	import Food from '../model/Food.svelte';
 	import Snake from '../model/Snake.svelte';
 
-	let foodX=0;
-	let foodY=0;
+	let foodX: number=0;
+	let foodY: number=0;
 
-	let mapWidth = 530;
-	let mapHeight = 530;
+	let mapWidth: number= 530;
+	let mapHeight: number = 530;
 
 	let direction: string = "right"
 
@@ -31,11 +31,11 @@
 	let snakeBodies = structuredClone(snakeBodies_default);
 
 	export let gameStats;
-	let score = 0;
+	let score: number = 0;
 	$: gameStats['score'] = score = 	snakeBodies.length - 3;
 
 
-	function isCollide(snake, food){
+	function isCollide(snake: Snake, food: Food){
 			return !(
 				snake.top	 < food.top  ||
 				snake.top  >	food.top ||
