@@ -10,7 +10,10 @@
 
     <ul>
         <li>
-            <a class="menu-item" href="/login">Play</a>
+
+            {#if }
+                <a class="menu-item" href="/snake">Play</a>
+            {/if}
         </li>
         <li>
             <a class="menu-item" href="/score">Scores</a>

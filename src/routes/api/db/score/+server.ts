@@ -1,5 +1,6 @@
 import {scores} from "$db/scores";
 import {json} from "@sveltejs/kit";
+import type {UpdateResult} from "mongodb";
 
 export async function GET(){
     const data = await scores.find({}, {projection: {'_id': 0,'name': 1, 'score': 1}}).sort({score:-1}).limit(20).toArray();
@@ -9,8 +10,21 @@ export async function GET(){
 export async function POST(requestEvent){
     const { request } = requestEvent;
     const { name, score } = await request.json();
-    const inserted = await scores.insertOne({name: name, score: score});
-    return json(inserted,{ status:201 });
+    const data = await scores.find({'name': name}, {projection: {'_id': 0,'name': 1, 'score': 1}}).toArray()
+    console.log("Filtered:", data);
+
+    let inserted: Document | UpdateResult;
+
+    if (data){
+        const inserted = await scores.replaceOne({'name': name},{name:name, score: score});
+        return json(inserted,{ status:201 });
+    }
+    else{
+        const inserted = await scores.insertOne({name: name, score: score});
+        return json(inserted,{ status:201 });
+    }
+
+    return json("Null:null", { status:500 });
 }
 
 
