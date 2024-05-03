@@ -22,7 +22,6 @@ export const actions = {
 
 
 
-
 export const load = (async ({ cookies }) => {
     const username = cookies.get('username');
 
