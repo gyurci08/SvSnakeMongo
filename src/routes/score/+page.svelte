@@ -10,11 +10,13 @@
 </script>
 
 <style>
-    * {
-        padding: 0;
-        margin: 0;
-        background: rgba(50,50,50,1);
+    :global(body){
+        background-image: url("/menu/photorealistic-galaxy-background.jpg");
+        background-size: 100%;
+        caret-color: transparent;
     }
+
+
 
     .wrapper {
         display: flex;
@@ -38,7 +40,7 @@
     }
 
     th {
-        background: rgba(255,137,0,0.9);
+        background: rgba(255, 128, 0, 0.9);
         padding: 10px 20px;
         color: rgba(129, 69, 0, 1);
     }

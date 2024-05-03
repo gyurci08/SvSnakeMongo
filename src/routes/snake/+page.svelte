@@ -6,7 +6,6 @@
 
     export let data: PageData;
 
-
     let gameStats = {
         username: data.username,
         score: 0,
@@ -39,7 +38,7 @@
         console.log("Posted: ",gameStats['username'], gameStats['score'])
     }
 
-    function checkGameState(){
+    function checkGameState(){ // TODO: Make this working
         //console.log("isEnd: ", gameStats['isEnd']);
         if (gameStats['isEnd'])
         {
@@ -68,19 +67,17 @@
     <!--<h2 class="tx_center">isEnd: {gameStats['isEnd']}</h2>-->
     <Game bind:gameStats></Game>
 
-    <button on:click={reloadPage}>Replay</button>
 
-    {#if gameStats['lastScore'] > 0}
-        <h2 class="tx_center">Last Score: {gameStats['lastScore']}</h2>
-        <h2 class="tx_center">You can save the progress to scoreboard for the user "{gameStats['username']}" ;)</h2>
-        <button on:click={doPost}>Save</button>
-        <a class="btn" style="text-align: center" href="/score">Scoreboard</a>
-    {/if}
+    <div class="menu-container">
+        <button on:click={reloadPage}>Replay</button>
 
-
-
-
-
+        {#if gameStats['lastScore'] > 0}
+            <h2 class="tx_center">Last Score: {gameStats['lastScore']}</h2>
+            <h2 class="tx_center">You can save the progress to scoreboard for the user "{gameStats['username']}" ;)</h2>
+            <button on:click={doPost}>Save</button>
+            <a class="btn" style="text-align: center" href="/score">Scoreboard</a>
+        {/if}
+    </div>
 </div>
 
 
@@ -117,9 +114,17 @@
     .tx_center{
         text-align: center;
         font-family: "Codystar";
+        color: white;
     }
 
-
+    .menu-container{
+        width: 50%;
+        margin: auto;
+        text-align: center;
+        color: white;
+        border-radius: 5px;
+        backdrop-filter: blur(2px);
+    }
 
 </style>
 

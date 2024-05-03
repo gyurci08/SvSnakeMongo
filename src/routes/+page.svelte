@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
+    import type {PageData} from "./$types";
 
-
-
+    export let data: PageData;
 </script>
 
 
@@ -10,9 +10,10 @@
 
     <ul>
         <li>
-
-            {#if }
-                <a class="menu-item" href="/snake">Play</a>
+            {#if data.username}
+                    <a class="menu-item" href="/snake">Play</a>
+                {:else}
+                    <a class="menu-item" href="/settings">Play</a>
             {/if}
         </li>
         <li>

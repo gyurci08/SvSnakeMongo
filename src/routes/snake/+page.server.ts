@@ -1,4 +1,5 @@
 import type { PageServerLoad } from './$types';
+import {redirect} from "@sveltejs/kit";
 
 
 export const actions = {
@@ -24,6 +25,10 @@ export const actions = {
 
 export const load = (async ({ cookies }) => {
     const username = cookies.get('username');
+
+    if (username == null){
+        redirect(302,"/settings")
+    }
 
     return {
         username

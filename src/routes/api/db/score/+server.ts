@@ -15,13 +15,16 @@ export async function POST(requestEvent){
 
     let inserted: Document | UpdateResult;
 
-    if (data){
+    if (data.length>0){
         const inserted = await scores.replaceOne({'name': name},{name:name, score: score});
+        console.log("Replaced: ", inserted);
         return json(inserted,{ status:201 });
     }
     else{
         const inserted = await scores.insertOne({name: name, score: score});
+        console.log("Inserted: ", inserted);
         return json(inserted,{ status:201 });
+
     }
 
     return json("Null:null", { status:500 });
